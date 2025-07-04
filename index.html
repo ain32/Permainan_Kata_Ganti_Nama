@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Permainan Kata Ganti Nama - KITA</title>
+    <title>Permainan Kata Ganti Nama</title>
     <style>
         * {
             margin: 0;
@@ -220,7 +220,7 @@
 .floating-word {
     position: absolute;
     background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
-    color: white;
+    color: yellow;
     padding: 15px 25px;
     border-radius: 20px;
     font-size: 22px;
@@ -419,18 +419,18 @@
 </head>
 <body>
     <div class="header">
-        <h1>🎮 Permainan Kata Ganti Nama - KITA</h1>
-        <p>Klik kata-kata yang terbang untuk memberi makan "KITA"!</p>
+        <h1>🎮 Permainan Kata Ganti Nama - "kita"</h1>
+        <p>Klik kata-kata yang terbang untuk memberi makan "kita"!</p>
     </div>
 
     <div class="game-area" id="gameArea">
         <div class="instruction" id="instruction">
-            🎯 Klik pada kata-kata yang terbang untuk memberi makan KITA!
+            🎯 Klik pada kata-kata yang terbang untuk memberi makan "kita"!
         </div>
         
         <div class="kita-character">
             <div class="kita-head">
-                <div class="kita-label">KITA</div>
+                <div class="kita-label">kita</div>
                 <div class="kita-eyes">
                     <div class="kita-eye"></div>
                     <div class="kita-eye"></div>
@@ -717,7 +717,7 @@ document.getElementById('timer').textContent = '60';
             gameOverScreen.className = 'game-over';
             gameOverScreen.innerHTML = `
                 <h2>🎉 Tahniah!</h2>
-                <p>Anda telah berjaya memberi makan semua kata ganti nama diri kepada "KITA"!</p>
+                <p>Anda telah berjaya memberi makan semua kata ganti nama diri kepada "kita"!</p>
 <p>Skor Akhir: <strong>${score}/20</strong></p>
 <p>Perkataan yang dimakan:</p>
 <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:10px;">
