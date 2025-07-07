@@ -420,12 +420,12 @@
 <body>
     <div class="header">
         <h1>🎮 Permainan Kata Ganti Nama - "kita"</h1>
-        <p>Klik kata ganti nama diri yang terbang untuk memberi makan kepada "kita".</p>
+        <p>Klik dan sebut kata ganti nama diri yang terbang untuk memberi makan kepada "kita".</p>
     </div>
 
     <div class="game-area" id="gameArea">
         <div class="instruction" id="instruction">
-            🎯 Klik kata ganti nama diri yang terbang untuk memberi makan kepada "kita".
+            🎯 Klik dan sebut kata ganti nama diri yang terbang untuk memberi makan kepada "kita".
         </div>
         
         <div class="kita-character">
@@ -451,7 +451,7 @@
     </div>
 
     <div class="timer-display">
-        ⏱️ Masa: <span id="timer">60</span>s
+        ⏱️ Masa: <span id="timer">20</span>s
     </div>
     
     <div class="game-controls">
@@ -465,14 +465,15 @@
     <script>
 const words = [
   // Kata Ganti Nama Diri Pertama (Tunggal & Jamak)
-  'saya', 'aku', 'ku', 'kami', 'hamba', 'patik', 'beta',
+  'saya', 'aku', 'ku', 'kami', 'hamba', 'patik', 'beta', 'daku',
 
   // Kata Ganti Nama Diri Kedua (Tunggal & Jamak)
-  'kau', 'engkau', 'kamu', 'mu', 'awak', 'tuan hamba', 'tuanku',
+  'kau', 'engkau', 'kamu', 'mu', 'awak', 'tuan hamba', 'tuanku', 'dikau', 'anda',
 
   // Kata Ganti Nama Diri Ketiga (Tunggal & Jamak)
-  'kalian', 'baginda', 'nya', 'dia', 'beliau' ,'mereka'
+  'kalian', 'baginda', 'nya', 'dia', 'beliau', 'mereka'
 ];
+
 
 
         let gameActive = false;
@@ -481,7 +482,7 @@ const words = [
         let wordSpawnInterval;
         let gameWords = [...words];
         let currentFloatingWords = [];
-        let timer = 60;
+        let timer = 20;
 let timerInterval;
 let eatenWords = [];
 
@@ -514,7 +515,7 @@ let eatenWords = [];
             spawnWord();
             wordSpawnInterval = setInterval(spawnWord, 2000);
 
-            timer = 60;
+            timer = 20
 document.getElementById('timer').textContent = timer;
 
 timerInterval = setInterval(() => {
@@ -546,7 +547,7 @@ function endGameByTime() {
     gameOverScreen.className = 'game-over';
     gameOverScreen.innerHTML = `
         <h2>⌛ Masa Tamat!</h2>
-        <p>Permainan berakhir selepas 60 saat.</p>
+        <p>Permainan berakhir selepas 20 saat.</p>
 <p>Skor Akhir: <strong>${score}/20</strong></p>
 <p>Perkataan yang dimakan:</p>
 <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:10px;">
@@ -673,7 +674,7 @@ function endGameByTime() {
 
             
 if (timerInterval) clearInterval(timerInterval);
-document.getElementById('timer').textContent = '60';
+document.getElementById('timer').textContent = '20';
 
 
             // Clear intervals
