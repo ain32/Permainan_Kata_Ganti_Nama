@@ -489,47 +489,58 @@ let eatenWords = [];
 
 
         function startGame() {
-            if (gameActive) return;
-            
-            gameActive = true;
-            gamePaused = false;
-            score = 0;
-            gameWords = [...words].sort(() => 0.5 - Math.random()).slice(0, 20);
-            currentFloatingWords = [];
-            
-            document.getElementById('scoreDisplay').textContent = score;
-            document.getElementById('startBtn').textContent = '🎮 Bermain';
-            document.getElementById('startBtn').disabled = true;
-            document.getElementById('instruction').style.display = 'none';
-            
-            // Clear any existing game over screen
-            const gameOver = document.querySelector('.game-over');
-            if (gameOver) {
-                gameOver.remove();
-            }
-            
-            // Clear belly
-            document.getElementById('bellyDisplay').innerHTML = '';
-            
-            // Start spawning words
-            spawnWord();
-            wordSpawnInterval = setInterval(spawnWord, 2000);
+    if (gameActive) return;
 
-            timer = 20
-document.getElementById('timer').textContent = timer;
+    gameActive = true;
+    gamePaused = false;
+    score = 0;
+    gameWords = [...words].sort(() => 0.5 - Math.random()).slice(0, 20);
+    currentFloatingWords = [];
+    eatenWords = [];
 
-timerInterval = setInterval(() => {
-    if (!gamePaused && gameActive) {
-        timer--;
-        document.getElementById('timer').textContent = timer;
-        if (timer <= 0) {
-            clearInterval(timerInterval);
-            endGameByTime();
-        }
+    document.getElementById('scoreDisplay').textContent = score;
+    document.getElementById('startBtn').textContent = '🎮 Bermain';
+    document.getElementById('startBtn').disabled = true;
+    document.getElementById('instruction').style.display = 'none';
+
+    // Clear any existing game over screen
+    const gameOver = document.querySelector('.game-over');
+    if (gameOver) {
+        gameOver.remove();
     }
-}, 1000);
 
+    // Clear belly
+    document.getElementById('bellyDisplay').innerHTML = '';
+
+    // Start spawning words with delay between each
+    spawnNextWord(); // This function will handle spawning with delay
+
+    // Timer setup
+    timer = 20;
+    document.getElementById('timer').textContent = timer;
+
+    timerInterval = setInterval(() => {
+        if (!gamePaused && gameActive) {
+            timer--;
+            document.getElementById('timer').textContent = timer;
+            if (timer <= 0) {
+                clearInterval(timerInterval);
+                endGameByTime();
+            }
         }
+    }, 1000);
+}
+
+function spawnNextWord() {
+    if (!gameActive || gamePaused || gameWords.length === 0) return;
+
+    spawnWord(); // Spawn satu perkataan
+
+    // Teruskan spawn seterusnya selepas 1.5 saat
+    setTimeout(() => {
+        spawnNextWord();
+    }, 1500); // Boleh tukar nilai ini untuk kelajuan yang lebih perlahan/pantas
+}
 
 
 function endGameByTime() {
