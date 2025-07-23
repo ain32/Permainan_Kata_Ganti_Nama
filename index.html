@@ -2,96 +2,105 @@
 <html lang="ms">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Permainan Kata Ganti Nama</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            /* Tambahkan untuk memastikan animasi berjalan lancar pada peranti mobile */
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
-        /* Tukar fon kepada web-safe sans-serif */
         body {
-            font-family: 'Arial', 'Helvetica', sans-serif;
-            font-size: 18px;
+            /* Gunakan fon sans-serif sebagai fallback utama untuk konsistensi cross-platform */
+            font-family: 'Comic Sans MS', 'Arial', 'Helvetica', sans-serif; 
+            font-size: 16px; /* Saiz asas yang lebih kecil untuk mobile */
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px;
+            padding: 10px; /* Padding yang lebih kecil untuk mobile */
             overflow-x: hidden;
         }
         .header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px; /* Margin yang lebih kecil */
             color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
         .header h1 {
-            font-size: 3.5em;
-            margin-bottom: 10px;
+            font-size: 1.8em; /* Saiz yang lebih kecil untuk tajuk utama */
+            margin-bottom: 5px;
             animation: bounce 2s infinite;
         }
         .header p {
-            font-size: 1.6em;
+            font-size: 1em; /* Saiz yang lebih kecil untuk perenggan */
             background: rgba(255,255,255,0.2);
-            padding: 10px 20px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
+            padding: 8px 15px; /* Padding yang lebih kecil */
+            border-radius: 15px;
+            backdrop-filter: blur(5px); /* Blur yang lebih kecil */
         }
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
+            40% { transform: translateY(-5px); } /* Gerakan yang lebih kecil */
+            60% { transform: translateY(-2.5px); }
         }
         .game-area {
             position: relative;
             width: 100%;
             max-width: 1000px;
-            height: 600px;
+            /* Ketinggian default yang lebih kecil untuk telefon */
+            height: 400px; 
             background: rgba(255,255,255,0.1);
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border-radius: 15px; /* Border radius yang lebih kecil */
+            backdrop-filter: blur(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Bayang yang lebih kecil */
             overflow: hidden;
-            margin-bottom: 20px;
+            margin-bottom: 15px; /* Margin bawah yang lebih kecil */
         }
         .kita-character {
             position: absolute;
-            bottom: 50px;
+            bottom: 20px; /* Bottom yang lebih kecil */
             left: 50%;
             transform: translateX(-50%);
-            width: 200px;
-            height: 250px;
+            /* Saiz yang lebih kecil untuk telefon */
+            width: 120px; 
+            height: 160px; 
             z-index: 10;
         }
         .kita-head {
-            width: 160px;
-            height: 140px;
+            /* Saiz yang lebih kecil */
+            width: 100px; 
+            height: 90px; 
             background: linear-gradient(45deg, #FFD700, #FFA500);
             border-radius: 50%;
             position: relative;
             margin: 0 auto;
-            border: 5px solid #FF6B6B;
-            box-shadow: 0 0 20px rgba(255,107,107,0.5);
+            /* Border yang lebih kecil */
+            border: 3px solid #FF6B6B; 
+            box-shadow: 0 0 10px rgba(255,107,107,0.5); /* Bayang yang lebih kecil */
             animation: headBob 1.5s ease-in-out infinite;
         }
         @keyframes headBob {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
+            50% { transform: translateY(-3px); } /* Gerakan yang lebih kecil */
         }
         .kita-eyes {
             display: flex;
             justify-content: space-between;
             position: absolute;
-            top: 30px;
-            left: 30px;
-            right: 30px;
+            /* Posisi yang disesuaikan */
+            top: 20px; 
+            left: 20px; 
+            right: 20px; 
         }
         .kita-eye {
-            width: 30px;
-            height: 30px;
+            /* Saiz yang lebih kecil */
+            width: 18px; 
+            height: 18px; 
             background: #000;
             border-radius: 50%;
             position: relative;
@@ -99,13 +108,15 @@
         }
         .kita-eye::after {
             content: '';
-            width: 6px;
-            height: 6px;
+            /* Saiz yang lebih kecil */
+            width: 4px; 
+            height: 4px; 
             background: #FFF;
             border-radius: 50%;
             position: absolute;
-            top: 3px;
-            left: 3px;
+            /* Posisi yang disesuaikan */
+            top: 2px; 
+            left: 2px; 
         }
         @keyframes blink {
             0%, 95%, 100% { transform: scaleY(1); }
@@ -113,70 +124,77 @@
         }
         .kita-mouth {
             position: absolute;
-            bottom: 20px;
+            /* Posisi yang disesuaikan */
+            bottom: 12px; 
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
-            height: 40px;
+            /* Saiz yang lebih kecil */
+            width: 40px; 
+            height: 25px; 
             background: #8B4513;
             border-radius: 50%;
-            border: 3px solid #654321;
+            /* Border yang lebih kecil */
+            border: 2px solid #654321; 
             transition: all 0.3s ease;
             cursor: pointer;
         }
         .kita-mouth.happy {
-            width: 80px;
-            height: 50px;
+            /* Saiz yang lebih kecil */
+            width: 50px; 
+            height: 30px; 
             background: #32CD32;
             animation: mouthGlow 0.5s ease-out;
         }
         @keyframes mouthGlow {
             0% { box-shadow: 0 0 0 rgba(50,205,50,0.7); }
-            50% { box-shadow: 0 0 20px rgba(50,205,50,0.7); }
+            50% { box-shadow: 0 0 15px rgba(50,205,50,0.7); } /* Bayang yang lebih kecil */
             100% { box-shadow: 0 0 0 rgba(50,205,50,0.7); }
         }
         .kita-label {
             position: absolute;
-            top: -30px;
+            top: -25px; /* Top yang disesuaikan */
             left: 50%;
             transform: translateX(-50%);
             background: #FF6B6B;
             color: white;
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-size: 22px;
+            padding: 6px 12px; /* Padding yang lebih kecil */
+            border-radius: 15px;
+            font-size: 16px; /* Saiz fon yang lebih kecil */
             font-weight: bold;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3); /* Bayang yang lebih kecil */
             animation: labelPulse 2s infinite;
         }
         @keyframes labelPulse {
             0%, 100% { transform: translateX(-50%) scale(1); }
-            50% { transform: translateX(-50%) scale(1.05); }
+            50% { transform: translateX(-50%) scale(1.03); } /* Skala yang lebih kecil */
         }
         .kita-body {
-            width: 100px;
-            height: 100px;
+            /* Saiz yang lebih kecil */
+            width: 60px; 
+            height: 60px; 
             background: linear-gradient(45deg, #32CD32, #228B22);
-            border-radius: 20px;
+            border-radius: 15px; /* Border radius yang lebih kecil */
             position: absolute;
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            border: 4px solid #FF6B6B;
-            box-shadow: 0 0 15px rgba(255,107,107,0.3);
+            /* Border yang lebih kecil */
+            border: 3px solid #FF6B6B; 
+            box-shadow: 0 0 10px rgba(255,107,107,0.3); /* Bayang yang lebih kecil */
         }
         .belly-display {
             position: absolute;
-            bottom: 10px;
-            left: 10px;
-            right: 10px;
-            top: 10px;
+            /* Padding yang lebih kecil */
+            bottom: 5px; 
+            left: 5px; 
+            right: 5px; 
+            top: 5px; 
             background: rgba(255,255,255,0.3);
-            border-radius: 10px;
-            padding: 5px;
+            border-radius: 8px; /* Border radius yang lebih kecil */
+            padding: 3px; /* Padding yang lebih kecil */
             display: flex;
             flex-wrap: wrap;
-            gap: 3px;
+            gap: 2px; /* Gap yang lebih kecil */
             align-items: flex-start;
             align-content: flex-start;
             overflow: hidden;
@@ -184,112 +202,119 @@
         .belly-word {
             background: rgba(255,255,255,0.9);
             color: #333;
-            padding: 2px 6px;
-            border-radius: 8px;
-            font-size: 10px;
+            padding: 1px 4px; /* Padding yang lebih kecil */
+            border-radius: 6px; /* Border radius yang lebih kecil */
+            font-size: 8px; /* Saiz fon yang lebih kecil */
             font-weight: bold;
-            /* Pastikan fon belly-word ikut induk */
-            font-family: inherit;
             animation: bellyPop 0.3s ease-out;
         }
         @keyframes bellyPop {
             0% { transform: scale(0); }
-            50% { transform: scale(1.2); }
+            50% { transform: scale(1.1); } /* Skala yang lebih kecil */
             100% { transform: scale(1); }
         }
-        /* Tukar fon untuk perkataan terbang */
         .floating-word {
             position: absolute;
             background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
             color: yellow;
-            padding: 15px 25px;
-            border-radius: 20px;
-            font-size: 22px;
+            padding: 10px 15px; /* Padding yang lebih kecil */
+            border-radius: 15px; /* Border radius yang lebih kecil */
+            font-size: 18px; /* Saiz fon yang lebih kecil */
             font-weight: bold;
-            /* Tukar fon kepada web-safe sans-serif */
-            font-family: 'Arial', 'Helvetica', sans-serif;
+            /* Gunakan fon sans-serif untuk konsistensi */
+            font-family: 'Comic Sans MS', 'Arial', 'Helvetica', sans-serif; 
             cursor: pointer;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3); /* Bayang yang lebih kecil */
             transition: all 0.3s ease;
             animation: float 3s linear infinite;
             user-select: none;
+            /* Tambahkan untuk interaksi sentuh yang lebih baik */
+            touch-action: manipulation; 
         }
         .floating-word:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            /* Efek hover yang lebih kecil untuk peranti sentuh */
+            transform: scale(1.05); 
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4); /* Bayang yang lebih kecil */
         }
         .floating-word.clicked {
             animation: wordEaten 0.5s ease-out forwards;
         }
+        /* Sesuaikan animasi float untuk ketinggian game-area yang lebih kecil */
         @keyframes float {
-            0% {
-                transform: translateY(0px) rotate(0deg);
+            0% { 
+                transform: translateY(0px) rotate(0deg); 
             }
-            100% {
-                transform: translateY(-600px) rotate(360deg);
+            100% { 
+                transform: translateY(-400px) rotate(360deg); 
             }
         }
         @keyframes wordEaten {
-            0% {
-                transform: scale(1);
+            0% { 
+                transform: scale(1); 
                 opacity: 1;
             }
-            50% {
-                transform: scale(1.5);
+            50% { 
+                transform: scale(1.2); /* Skala yang lebih kecil */
                 opacity: 0.8;
             }
-            100% {
-                transform: scale(0) translateY(-100px);
+            100% { 
+                transform: scale(0) translateY(-60px); /* Translasi Y yang lebih kecil */
                 opacity: 0;
             }
         }
         .control-panel {
             display: flex;
-            gap: 20px;
+            flex-wrap: wrap; /* Benarkan wrapping untuk skrin kecil */
+            gap: 10px; /* Gap yang lebih kecil */
             align-items: center;
+            justify-content: center; /* Tengahkan item */
             background: rgba(255,255,255,0.2);
-            padding: 20px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
+            padding: 15px; /* Padding yang lebih kecil */
+            border-radius: 15px; /* Border radius yang lebih kecil */
+            backdrop-filter: blur(5px); /* Blur yang lebih kecil */
             color: white;
-            font-size: 18px;
+            font-size: 14px; /* Saiz fon yang lebih kecil */
             font-weight: bold;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            width: 100%;
+            max-width: 1000px;
         }
         .score-display {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px; /* Gap yang lebih kecil */
         }
         .score-number {
             background: #FF6B6B;
             color: white;
-            padding: 15px 20px;
-            border-radius: 15px;
-            font-size: 30px;
-            min-width: 80px;
+            padding: 8px 12px; /* Padding yang lebih kecil */
+            border-radius: 12px; /* Border radius yang lebih kecil */
+            font-size: 20px; /* Saiz fon yang lebih kecil */
+            min-width: 50px; /* Min-width yang lebih kecil */
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3); /* Bayang yang lebih kecil */
         }
         .game-controls {
             display: flex;
-            gap: 10px;
+            gap: 8px; /* Gap yang lebih kecil */
         }
         .control-btn {
             background: linear-gradient(45deg, #4ECDC4, #44A08D);
             color: white;
             border: none;
-            padding: 15px 25px;
-            border-radius: 15px;
-            font-size: 20px;
+            padding: 10px 15px; /* Padding yang lebih kecil */
+            border-radius: 12px; /* Border radius yang lebih kecil */
+            font-size: 14px; /* Saiz fon yang lebih kecil */
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2); /* Bayang yang lebih kecil */
+            /* Tambahkan untuk interaksi sentuh yang lebih baik */
+            touch-action: manipulation; 
         }
         .control-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            transform: translateY(-1px); /* Translasi Y yang lebih kecil */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Bayang yang lebih kecil */
         }
         .control-btn:active {
             transform: translateY(0);
@@ -306,12 +331,15 @@
             left: 50%;
             transform: translate(-50%, -50%);
             background: rgba(255,255,255,0.95);
-            padding: 40px;
-            border-radius: 20px;
+            padding: 20px; /* Padding yang lebih kecil */
+            border-radius: 15px; /* Border radius yang lebih kecil */
             text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5); /* Bayang yang lebih kecil */
             z-index: 1000;
             animation: gameOverAnimation 0.5s ease-out;
+            /* Tetapkan lebar untuk mobile */
+            width: 90%; 
+            max-width: 400px; /* Max-width untuk skrin besar */
         }
         @keyframes gameOverAnimation {
             0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
@@ -319,55 +347,488 @@
         }
         .game-over h2 {
             color: #FF6B6B;
-            font-size: 3em;
-            margin-bottom: 20px;
+            font-size: 2em; /* Saiz fon yang lebih kecil */
+            margin-bottom: 15px; /* Margin bawah yang lebih kecil */
         }
         .game-over p {
             color: #666;
-            font-size: 1.5em;
-            margin-bottom: 20px;
+            font-size: 1.1em; /* Saiz fon yang lebih kecil */
+            margin-bottom: 15px; /* Margin bawah yang lebih kecil */
         }
         .instruction {
             position: absolute;
-            top: 20px;
-            left: 20px;
-            right: 20px;
+            top: 10px; /* Top yang lebih kecil */
+            left: 10px; /* Left yang lebih kecil */
+            right: 10px; /* Right yang lebih kecil */
             background: rgba(255,255,255,0.2);
             color: white;
-            padding: 15px;
-            border-radius: 15px;
+            padding: 10px; /* Padding yang lebih kecil */
+            border-radius: 12px; /* Border radius yang lebih kecil */
             text-align: center;
+            font-size: 12px; /* Saiz fon yang lebih kecil */
             font-weight: bold;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(5px); /* Blur yang lebih kecil */
             animation: instructionBlink 2s infinite;
         }
         @keyframes instructionBlink {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.7; }
         }
-        @media (max-width: 768px) {
+
+        /* Media query untuk telefon besar / tablet kecil dalam mod potret */
+        @media (min-width: 480px) {
+            body {
+                font-size: 17px;
+                padding: 15px;
+            }
+            .header h1 {
+                font-size: 2.2em;
+            }
+            .header p {
+                font-size: 1.1em;
+                padding: 10px 18px;
+            }
+            .game-area {
+                height: 450px;
+            }
+            @keyframes float {
+                100% { 
+                    transform: translateY(-450px) rotate(360deg); 
+                }
+            }
+            .kita-character {
+                width: 140px;
+                height: 180px;
+                bottom: 25px;
+            }
+            .kita-head {
+                width: 110px;
+                height: 100px;
+                border: 4px solid #FF6B6B;
+            }
+            .kita-eyes {
+                top: 22px;
+                left: 22px;
+                right: 22px;
+            }
+            .kita-eye {
+                width: 20px;
+                height: 20px;
+            }
+            .kita-eye::after {
+                width: 5px;
+                height: 5px;
+                top: 2.5px;
+                left: 2.5px;
+            }
+            .kita-mouth {
+                width: 45px;
+                height: 30px;
+                bottom: 15px;
+                border: 2.5px solid #654321;
+            }
+            .kita-mouth.happy {
+                width: 55px;
+                height: 35px;
+            }
+            .kita-label {
+                top: -28px;
+                padding: 7px 14px;
+                font-size: 17px;
+            }
+            .kita-body {
+                width: 70px;
+                height: 70px;
+                border-radius: 17px;
+                border: 3.5px solid #FF6B6B;
+            }
+            .belly-display {
+                bottom: 7px;
+                left: 7px;
+                right: 7px;
+                top: 7px;
+                border-radius: 9px;
+                padding: 4px;
+                gap: 2.5px;
+            }
+            .belly-word {
+                padding: 1.5px 5px;
+                border-radius: 7px;
+                font-size: 9px;
+            }
+            .floating-word {
+                padding: 12px 18px;
+                border-radius: 17px;
+                font-size: 20px;
+            }
+            @keyframes wordEaten {
+                50% { 
+                    transform: scale(1.3); 
+                }
+                100% { 
+                    transform: scale(0) translateY(-70px); 
+                }
+            }
+            .control-panel {
+                gap: 15px;
+                padding: 18px;
+                font-size: 16px;
+            }
+            .score-display {
+                gap: 9px;
+            }
+            .score-number {
+                padding: 10px 15px;
+                border-radius: 13px;
+                font-size: 24px;
+                min-width: 60px;
+            }
+            .game-controls {
+                gap: 9px;
+            }
+            .control-btn {
+                padding: 12px 18px;
+                border-radius: 13px;
+                font-size: 16px;
+            }
+            .game-over {
+                padding: 25px;
+                border-radius: 17px;
+            }
+            .game-over h2 {
+                font-size: 2.2em;
+                margin-bottom: 18px;
+            }
+            .game-over p {
+                font-size: 1.2em;
+                margin-bottom: 18px;
+            }
+            .instruction {
+                top: 15px;
+                left: 15px;
+                right: 15px;
+                padding: 12px;
+                font-size: 13px;
+            }
+        }
+
+
+        /* Media query untuk skrin sederhana (tablet) */
+        @media (min-width: 768px) {
+            body {
+                font-size: 18px;
+                padding: 20px;
+            }
+            .header {
+                margin-bottom: 20px;
+            }
+            .header h1 {
+                font-size: 3em; /* Saiz yang sedikit lebih kecil daripada asal */
+                margin-bottom: 10px;
+            }
+            .header p {
+                font-size: 1.4em; /* Saiz yang sedikit lebih kecil daripada asal */
+                padding: 10px 20px;
+                border-radius: 20px;
+                backdrop-filter: blur(10px);
+            }
+            .game-area {
+                height: 550px; /* Ketinggian yang sedikit lebih kecil daripada asal */
+                border-radius: 20px;
+                backdrop-filter: blur(10px);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                margin-bottom: 20px;
+            }
+            .kita-character {
+                width: 180px; /* Saiz yang sedikit lebih kecil daripada asal */
+                height: 230px; /* Saiz yang sedikit lebih kecil daripada asal */
+                bottom: 40px; /* Bottom yang sedikit lebih kecil daripada asal */
+            }
+            .kita-head {
+                width: 140px; /* Saiz yang sedikit lebih kecil daripada asal */
+                height: 120px; /* Saiz yang sedikit lebih kecil daripada asal */
+                border: 5px solid #FF6B6B;
+                box-shadow: 0 0 20px rgba(255,107,107,0.5);
+            }
+            @keyframes headBob {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-5px); }
+            }
+            .kita-eyes {
+                top: 25px; /* Top yang sedikit lebih kecil daripada asal */
+                left: 25px; /* Left yang sedikit lebih kecil daripada asal */
+                right: 25px; /* Right yang sedikit lebih kecil daripada asal */
+            }
+            .kita-eye {
+                width: 25px; /* Saiz yang sedikit lebih kecil daripada asal */
+                height: 25px; /* Saiz yang sedikit lebih kecil daripada asal */
+            }
+            .kita-eye::after {
+                width: 5px; /* Saiz yang sedikit lebih kecil daripada asal */
+                height: 5px; /* Saiz yang sedikit lebih kecil daripada asal */
+                top: 2.5px; /* Top yang sedikit lebih kecil daripada asal */
+                left: 2.5px; /* Left yang sedikit lebih kecil daripada asal */
+            }
+            .kita-mouth {
+                width: 55px; /* Saiz yang sedikit lebih kecil daripada asal */
+                height: 35px; /* Saiz yang sedikit lebih kecil daripada asal */
+                bottom: 18px; /* Bottom yang sedikit lebih kecil daripada asal */
+                border: 3px solid #654321;
+            }
+            .kita-mouth.happy {
+                width: 70px; /* Saiz yang sedikit lebih kecil daripada asal */
+                height: 45px; /* Saiz yang sedikit lebih kecil daripada asal */
+            }
+            @keyframes mouthGlow {
+                50% { box-shadow: 0 0 20px rgba(50,205,50,0.7); }
+            }
+            .kita-label {
+                top: -30px;
+                padding: 10px 20px;
+                border-radius: 20px;
+                font-size: 20px; /* Saiz yang sedikit lebih kecil daripada asal */
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            }
+            @keyframes labelPulse {
+                50% { transform: translateX(-50%) scale(1.05); }
+            }
+            .kita-body {
+                width: 90px; /* Saiz yang sedikit lebih kecil daripada asal */
+                height: 90px; /* Saiz yang sedikit lebih kecil daripada asal */
+                border-radius: 20px;
+                border: 4px solid #FF6B6B;
+                box-shadow: 0 0 15px rgba(255,107,107,0.3);
+            }
+            .belly-display {
+                bottom: 10px;
+                left: 10px;
+                right: 10px;
+                top: 10px;
+                border-radius: 10px;
+                padding: 5px;
+                gap: 3px;
+            }
+            .belly-word {
+                padding: 2px 6px;
+                border-radius: 8px;
+                font-size: 10px;
+            }
+            @keyframes bellyPop {
+                50% { transform: scale(1.2); }
+            }
+            .floating-word {
+                padding: 15px 25px;
+                border-radius: 20px;
+                font-size: 22px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            }
+            .floating-word:hover {
+                transform: scale(1.1);
+                box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            }
+            @keyframes float {
+                100% { 
+                    transform: translateY(-550px) rotate(360deg); 
+                }
+            }
+            @keyframes wordEaten {
+                50% { 
+                    transform: scale(1.4); 
+                }
+                100% { 
+                    transform: scale(0) translateY(-85px); 
+                }
+            }
+            .control-panel {
+                flex-direction: row; /* Kembali kepada baris untuk skrin yang lebih besar */
+                gap: 20px;
+                padding: 20px;
+                border-radius: 20px;
+                backdrop-filter: blur(10px);
+                font-size: 18px;
+            }
+            .score-display {
+                gap: 10px;
+            }
+            .score-number {
+                padding: 15px 20px;
+                border-radius: 15px;
+                font-size: 30px;
+                min-width: 80px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            }
+            .game-controls {
+                gap: 10px;
+            }
+            .control-btn {
+                padding: 15px 25px;
+                border-radius: 15px;
+                font-size: 20px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            }
+            .control-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            }
+            .game-over {
+                padding: 40px;
+                border-radius: 20px;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+                width: auto; /* Kembali kepada auto width */
+                max-width: none; /* Tiada max-width */
+            }
+            .game-over h2 {
+                font-size: 3em;
+                margin-bottom: 20px;
+            }
+            .game-over p {
+                font-size: 1.5em;
+                margin-bottom: 20px;
+            }
+            .instruction {
+                top: 20px;
+                left: 20px;
+                right: 20px;
+                padding: 15px;
+                border-radius: 15px;
+                font-size: 16px; /* Saiz yang sedikit lebih kecil daripada asal */
+                backdrop-filter: blur(10px);
+            }
+        }
+
+        /* Media query untuk skrin besar (desktop) - gunakan saiz asal */
+        @media (min-width: 1024px) {
+            body {
+                font-size: 18px;
+                padding: 20px;
+            }
+            .header h1 {
+                font-size: 3.5em;
+            }
+            .header p {
+                font-size: 1.6em;
+            }
             .game-area {
                 height: 600px;
             }
             .kita-character {
-                width: 220px;
-                height: 280px;
+                width: 200px;
+                height: 250px;
+                bottom: 50px;
             }
             .kita-head {
-                width: 180px;
+                width: 160px;
                 height: 140px;
+            }
+            .kita-eyes {
+                top: 30px;
+                left: 30px;
+                right: 30px;
+            }
+            .kita-eye {
+                width: 30px;
+                height: 30px;
+            }
+            .kita-eye::after {
+                width: 6px;
+                height: 6px;
+                top: 3px;
+                left: 3px;
+            }
+            .kita-mouth {
+                width: 60px;
+                height: 40px;
+                bottom: 20px;
+            }
+            .kita-mouth.happy {
+                width: 80px;
+                height: 50px;
+            }
+            .kita-label {
+                font-size: 22px;
             }
             .kita-body {
                 width: 100px;
                 height: 100px;
             }
+            .floating-word {
+                padding: 15px 25px;
+                font-size: 22px;
+            }
+            @keyframes float {
+                100% { 
+                    transform: translateY(-600px) rotate(360deg); 
+                }
+            }
+            @keyframes wordEaten {
+                50% { 
+                    transform: scale(1.5); 
+                }
+                100% { 
+                    transform: scale(0) translateY(-100px); 
+                }
+            }
             .control-panel {
-                flex-direction: column;
-                gap: 15px;
+                font-size: 18px;
+            }
+            .score-number {
+                font-size: 30px;
+                min-width: 80px;
+            }
+            .control-btn {
+                padding: 15px 25px;
+                font-size: 20px;
+            }
+            .game-over h2 {
+                font-size: 3em;
+            }
+            .game-over p {
+                font-size: 1.5em;
+            }
+            .instruction {
+                font-size: 18px;
+            }
+        }
+
+        /* Media query untuk telefon dalam mod landskap */
+        @media (max-width: 767px) and (orientation: landscape) {
+            .game-area {
+                height: 250px; /* Ketinggian yang jauh lebih kecil untuk landskap */
+            }
+            @keyframes float {
+                100% { 
+                    transform: translateY(-250px) rotate(360deg); 
+                }
+            }
+            .kita-character {
+                width: 100px; /* Saiz yang lebih kecil untuk landskap */
+                height: 130px; /* Saiz yang lebih kecil untuk landskap */
+                bottom: 15px; /* Bottom yang lebih kecil untuk landskap */
+            }
+            .kita-head {
+                width: 80px; /* Saiz yang lebih kecil untuk landskap */
+                height: 70px; /* Saiz yang lebih kecil untuk landskap */
+            }
+            .kita-body {
+                width: 50px; /* Saiz yang lebih kecil untuk landskap */
+                height: 50px; /* Saiz yang lebih kecil untuk landskap */
             }
             .floating-word {
-                font-size: 18px;
-                padding: 10px 18px;
+                font-size: 16px; /* Saiz fon yang lebih kecil untuk landskap */
+                padding: 8px 14px; /* Padding yang lebih kecil untuk landskap */
+            }
+            .control-panel {
+                flex-direction: row; /* Kekalkan baris dalam landskap jika muat */
+                font-size: 13px; /* Saiz fon yang lebih kecil untuk landskap */
+            }
+            .control-btn {
+                padding: 8px 12px; /* Padding yang lebih kecil untuk landskap */
+                font-size: 13px; /* Saiz fon yang lebih kecil untuk landskap */
+            }
+            .score-number {
+                font-size: 18px; /* Saiz fon yang lebih kecil untuk landskap */
+                min-width: 40px; /* Min-width yang lebih kecil untuk landskap */
+                padding: 6px 10px; /* Padding yang lebih kecil untuk landskap */
             }
         }
     </style>
@@ -396,128 +857,145 @@
         </div>
     </div>
     <div class="control-panel">
-    <div class="score-display">
-        <span>📊 Skor:</span>
-        <div class="score-number" id="scoreDisplay">0</div>
-        <span>/ 20</span>
+        <div class="score-display">
+            <span>📊 Skor:</span>
+            <div class="score-number" id="scoreDisplay">0</div>
+            <span>/ 20</span>
+        </div>
+        <div class="timer-display">
+            ⏱️ Masa: <span id="timer">20</span>s
+        </div>
+        <div class="game-controls">
+            <button class="control-btn start" id="startBtn" onclick="startGame()">🚀 Mula</button>
+            <button class="control-btn pause" id="pauseBtn" onclick="togglePause()">⏸️ Jeda</button>
+            <button class="control-btn" onclick="resetGame()">🔄 Reset</button>
+        </div>
     </div>
-    <div class="timer-display">
-        ⏱️ Masa: <span id="timer">20</span>s
-    </div>
-    <div class="game-controls">
-        <button class="control-btn start" id="startBtn" onclick="startGame()">🚀 Mula</button>
-        <button class="control-btn pause" id="pauseBtn" onclick="togglePause()">⏸️ Jeda</button>
-        <button class="control-btn" onclick="resetGame()">🔄 Reset</button>
-    </div>
-</div>
     <script>
-const words = [
-  // Kata Ganti Nama Diri Pertama (Tunggal & Jamak)
-  'saya', 'aku', 'ku', 'kami', 'hamba', 'patik', 'beta', 'daku',
-  // Kata Ganti Nama Diri Kedua (Tunggal & Jamak)
-  'kau', 'engkau', 'kamu', 'mu', 'awak', 'tuan hamba', 'tuanku', 'dikau', 'anda',
-  // Kata Ganti Nama Diri Ketiga (Tunggal & Jamak)
-  'kalian', 'baginda', 'nya', 'dia', 'beliau', 'mereka'
-];
+        const words = [
+          // Kata Ganti Nama Diri Pertama (Tunggal & Jamak)
+          'saya', 'aku', 'ku', 'kami', 'hamba', 'patik', 'beta', 'daku',
+          // Kata Ganti Nama Diri Kedua (Tunggal & Jamak)
+          'kau', 'engkau', 'kamu', 'mu', 'awak', 'tuan hamba', 'tuanku', 'dikau', 'anda',
+          // Kata Ganti Nama Diri Ketiga (Tunggal & Jamak)
+          'kalian', 'baginda', 'nya', 'dia', 'beliau', 'mereka'
+        ];
         let gameActive = false;
         let gamePaused = false;
         let score = 0;
-        let wordSpawnInterval;
         let gameWords = [...words];
         let currentFloatingWords = [];
         let timer = 20;
-let timerInterval;
-let eatenWords = [];
+        let timerInterval;
+        let eatenWords = [];
+        let spawnInterval; // Untuk menguruskan penjanaan perkataan
+
         function startGame() {
-    if (gameActive) return;
-    gameActive = true;
-    gamePaused = false;
-    score = 0;
-    gameWords = [...words].sort(() => 0.5 - Math.random()).slice(0, 20);
-    currentFloatingWords = [];
-    eatenWords = [];
-    document.getElementById('scoreDisplay').textContent = score;
-    document.getElementById('startBtn').textContent = '🎮 Bermain';
-    document.getElementById('startBtn').disabled = true;
-    document.getElementById('instruction').style.display = 'none';
-    // Clear any existing game over screen
-    const gameOver = document.querySelector('.game-over');
-    if (gameOver) {
-        gameOver.remove();
-    }
-    // Clear belly
-    document.getElementById('bellyDisplay').innerHTML = '';
-    // Start spawning words with delay between each
-    spawnNextWord(); // This function will handle spawning with delay
-    // Timer setup
-    timer = 20;
-    document.getElementById('timer').textContent = timer;
-    timerInterval = setInterval(() => {
-        if (!gamePaused && gameActive) {
-            timer--;
-            document.getElementById('timer').textContent = timer;
-            if (timer <= 0) {
-                clearInterval(timerInterval);
-                endGameByTime();
+            if (gameActive) return;
+            gameActive = true;
+            gamePaused = false;
+            score = 0;
+            gameWords = [...words].sort(() => 0.5 - Math.random()).slice(0, 20);
+            currentFloatingWords = [];
+            eatenWords = [];
+            document.getElementById('scoreDisplay').textContent = score;
+            document.getElementById('startBtn').textContent = '🎮 Bermain';
+            document.getElementById('startBtn').disabled = true;
+            document.getElementById('instruction').style.display = 'none';
+            
+            const gameOver = document.querySelector('.game-over');
+            if (gameOver) {
+                gameOver.remove();
             }
+            
+            document.getElementById('bellyDisplay').innerHTML = '';
+            
+            // Mulakan penjanaan perkataan
+            spawnNextWord();
+            
+            timer = 20;
+            document.getElementById('timer').textContent = timer;
+            if (timerInterval) clearInterval(timerInterval);
+            timerInterval = setInterval(() => {
+                if (!gamePaused && gameActive) {
+                    timer--;
+                    document.getElementById('timer').textContent = timer;
+                    if (timer <= 0) {
+                        clearInterval(timerInterval);
+                        endGameByTime();
+                    }
+                }
+            }, 1000);
         }
-    }, 1000);
-}
-function spawnNextWord() {
-    if (!gameActive || gamePaused || gameWords.length === 0) return;
-    spawnWord(); // Spawn satu perkataan
-    // Teruskan spawn seterusnya selepas 1.5 saat
-    setTimeout(() => {
-        spawnNextWord();
-    }, 1500); // Boleh tukar nilai ini untuk kelajuan yang lebih perlahan/pantas
-}
-function endGameByTime() {
-    gameActive = false;
-    gamePaused = false;
-    if (wordSpawnInterval) clearInterval(wordSpawnInterval);
-    // Remove all floating words
-    currentFloatingWords.forEach(word => word.remove());
-    currentFloatingWords = [];
-    const gameArea = document.getElementById('gameArea');
-    const gameOverScreen = document.createElement('div');
-    gameOverScreen.className = 'game-over';
-    gameOverScreen.innerHTML = `
-        <h2>⌛ Masa Tamat!</h2>
-        <p>Permainan berakhir selepas 20 saat.</p>
-<p>Skor Akhir: <strong>${score}/20</strong></p>
-<p>Perkataan yang dimakan:</p>
-<div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:10px;">
-    ${eatenWords.map(word => `<span style="background:#FF6B6B;color:white;padding:5px 10px;border-radius:10px;font-size:14px;">${word}</span>`).join('')}
-</div>
-        <button class="control-btn" onclick="resetGame()">🔄 Main Lagi</button>
-    `;
-    gameArea.appendChild(gameOverScreen);
-    // Reset start button
-    document.getElementById('startBtn').textContent = '🚀 Mula';
-    document.getElementById('startBtn').disabled = false;
-}
+
+        function spawnNextWord() {
+            if (!gameActive || gamePaused || gameWords.length === 0) return;
+            
+            spawnWord();
+            
+            // Teruskan penjanaan seterusnya selepas 1.5 saat
+            spawnInterval = setTimeout(() => {
+                spawnNextWord();
+            }, 1500);
+        }
+
+        function endGameByTime() {
+            gameActive = false;
+            gamePaused = false;
+            if (spawnInterval) clearTimeout(spawnInterval);
+            if (timerInterval) clearInterval(timerInterval);
+            
+            currentFloatingWords.forEach(word => word.remove());
+            currentFloatingWords = [];
+            
+            const gameArea = document.getElementById('gameArea');
+            const gameOverScreen = document.createElement('div');
+            gameOverScreen.className = 'game-over';
+            gameOverScreen.innerHTML = `
+                <h2>⌛ Masa Tamat!</h2>
+                <p>Permainan berakhir selepas 20 saat.</p>
+                <p>Skor Akhir: <strong>${score}/20</strong></p>
+                <p>Perkataan yang dimakan:</p>
+                <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:10px;">
+                    ${eatenWords.map(word => `<span style="background:#FF6B6B;color:white;padding:5px 10px;border-radius:10px;font-size:14px;">${word}</span>`).join('')}
+                </div>
+                <button class="control-btn" onclick="resetGame()" style="margin-top:20px;">🔄 Main Lagi</button>
+            `;
+            gameArea.appendChild(gameOverScreen);
+            
+            document.getElementById('startBtn').textContent = '🚀 Mula';
+            document.getElementById('startBtn').disabled = false;
+        }
+
         function spawnWord() {
             if (!gameActive || gamePaused || gameWords.length === 0) return;
             const gameArea = document.getElementById('gameArea');
             const wordElement = document.createElement('div');
             wordElement.className = 'floating-word';
-            // Get random word
+            
             const randomIndex = Math.floor(Math.random() * gameWords.length);
             const word = gameWords[randomIndex];
             wordElement.textContent = word;
-            // Remove word from available words
+            
             gameWords.splice(randomIndex, 1);
-            // Random starting position
+            
             const startX = Math.random() * (gameArea.offsetWidth - 100);
             wordElement.style.left = startX + 'px';
             wordElement.style.bottom = '-50px';
-            // Add click event
+            
             wordElement.addEventListener('click', function() {
                 catchWord(this, word);
             });
+            
+            // Tambah event listener untuk sentuhan pada peranti mobile
+            wordElement.addEventListener('touchstart', function(e) {
+                 e.preventDefault(); // Mencegah scroll default
+                catchWord(this, word);
+            }, { passive: false });
+            
             gameArea.appendChild(wordElement);
             currentFloatingWords.push(wordElement);
-            // Remove word after animation completes
+            
             setTimeout(() => {
                 if (wordElement.parentNode) {
                     wordElement.remove();
@@ -525,57 +1003,62 @@ function endGameByTime() {
                 }
             }, 3000);
         }
+
         function catchWord(wordElement, word) {
             if (!gameActive || gamePaused) return;
             eatenWords.push(word);
-            // Add clicked animation
+            
             wordElement.classList.add('clicked');
-            // Make mouth happy
+            
             const mouth = document.getElementById('kitaMouth');
             mouth.classList.add('happy');
             setTimeout(() => {
                 mouth.classList.remove('happy');
             }, 500);
-            // Add to belly
+            
             const bellyDisplay = document.getElementById('bellyDisplay');
             const bellyWord = document.createElement('div');
             bellyWord.className = 'belly-word';
             bellyWord.textContent = word;
             bellyDisplay.appendChild(bellyWord);
-            // Update score
+            
             score++;
             document.getElementById('scoreDisplay').textContent = score;
-            // Remove word element
+            
             setTimeout(() => {
                 if (wordElement.parentNode) {
                     wordElement.remove();
                 }
             }, 500);
-            // Remove from current floating words
+            
             currentFloatingWords = currentFloatingWords.filter(w => w !== wordElement);
-            // Check if game complete
+            
             if (score === 20) {
                 endGame();
             }
         }
+
         function togglePause() {
             if (!gameActive) return;
             gamePaused = !gamePaused;
             const pauseBtn = document.getElementById('pauseBtn');
             if (gamePaused) {
                 pauseBtn.textContent = '▶️ Sambung';
-                // Pause all floating words
                 currentFloatingWords.forEach(word => {
                     word.style.animationPlayState = 'paused';
                 });
+                // Jeda penjanaan juga
+                if (spawnInterval) clearTimeout(spawnInterval);
             } else {
                 pauseBtn.textContent = '⏸️ Henti';
-                // Resume all floating words
                 currentFloatingWords.forEach(word => {
                     word.style.animationPlayState = 'running';
                 });
+                // Sambung penjanaan
+                spawnNextWord();
             }
         }
+
         function resetGame() {
             gameActive = false;
             gamePaused = false;
@@ -583,56 +1066,54 @@ function endGameByTime() {
             gameWords = [...words];
             currentFloatingWords = [];
             eatenWords = [];
-if (timerInterval) clearInterval(timerInterval);
-document.getElementById('timer').textContent = '20';
-            // Clear intervals
-            if (wordSpawnInterval) {
-                clearInterval(wordSpawnInterval);
-            }
-            // Clear floating words
+            
+            if (spawnInterval) clearTimeout(spawnInterval);
+            if (timerInterval) clearInterval(timerInterval);
+            document.getElementById('timer').textContent = '20';
+            
             const floatingWords = document.querySelectorAll('.floating-word');
             floatingWords.forEach(word => word.remove());
-            // Clear belly
+            
             document.getElementById('bellyDisplay').innerHTML = '';
-            // Reset UI
+            
             document.getElementById('scoreDisplay').textContent = '0';
             document.getElementById('startBtn').textContent = '🚀 Mula';
             document.getElementById('startBtn').disabled = false;
             document.getElementById('pauseBtn').textContent = '⏸️ Henti';
             document.getElementById('instruction').style.display = 'block';
-            // Remove game over screen
+            
             const gameOver = document.querySelector('.game-over');
             if (gameOver) {
                 gameOver.remove();
             }
         }
+
         function endGame() {
             gameActive = false;
             gamePaused = false;
-            // Clear interval
-            if (wordSpawnInterval) {
-                clearInterval(wordSpawnInterval);
-            }
-            // Show completion message
+            
+            if (spawnInterval) clearTimeout(spawnInterval);
+            if (timerInterval) clearInterval(timerInterval);
+            
             const gameArea = document.getElementById('gameArea');
             const gameOverScreen = document.createElement('div');
             gameOverScreen.className = 'game-over';
             gameOverScreen.innerHTML = `
                 <h2>🎉 Tahniah!</h2>
                 <p>Anda telah berjaya memberi makan semua kata ganti nama diri kepada "kita"!</p>
-<p>Skor Akhir: <strong>${score}/20</strong></p>
-<p>Perkataan yang dimakan:</p>
-<div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:10px;">
-    ${eatenWords.map(word => `<span style="background:#FF6B6B;color:white;padding:5px 10px;border-radius:10px;font-size:14px;">${word}</span>`).join('')}
-</div>
-                <button class="control-btn" onclick="resetGame()">🔄 Main Lagi</button>
+                <p>Skor Akhir: <strong>${score}/20</strong></p>
+                <p>Perkataan yang dimakan:</p>
+                <div style="display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:10px;">
+                    ${eatenWords.map(word => `<span style="background:#FF6B6B;color:white;padding:5px 10px;border-radius:10px;font-size:14px;">${word}</span>`).join('')}
+                </div>
+                <button class="control-btn" onclick="resetGame()" style="margin-top:20px;">🔄 Main Lagi</button>
             `;
             gameArea.appendChild(gameOverScreen);
-            // Reset start button
+            
             document.getElementById('startBtn').textContent = '🚀 Mula';
             document.getElementById('startBtn').disabled = false;
         }
-        // Initialize game
+
         document.addEventListener('DOMContentLoaded', function() {
             resetGame();
         });
