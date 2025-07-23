@@ -10,409 +10,550 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Comic Sans MS', cursive;
-            font-size: 18px;
+            font-size: 16px; /* Reduced base font size for mobile */
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: 20px;
+            padding: 10px; /* Reduced padding */
             overflow-x: hidden;
         }
-
         .header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px; /* Reduced margin */
             color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5); /* Reduced shadow */
         }
-
         .header h1 {
-            font-size: 3.5em;
-            margin-bottom: 10px;
+            font-size: 2.2em; /* Reduced font size */
+            margin-bottom: 5px; /* Reduced margin */
             animation: bounce 2s infinite;
         }
-
         .header p {
-            font-size: 1.6em;
+            font-size: 1.1em; /* Reduced font size */
             background: rgba(255,255,255,0.2);
-            padding: 10px 20px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
+            padding: 8px 15px; /* Reduced padding */
+            border-radius: 15px; /* Reduced border radius */
+            backdrop-filter: blur(5px); /* Reduced blur */
         }
-
         @keyframes bounce {
             0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
+            40% { transform: translateY(-5px); }
+            60% { transform: translateY(-2.5px); }
         }
-
         .game-area {
             position: relative;
             width: 100%;
             max-width: 1000px;
-            height: 600px;
+            height: 500px; /* Reduced height for mobile */
             background: rgba(255,255,255,0.1);
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            border-radius: 15px; /* Reduced border radius */
+            backdrop-filter: blur(5px); /* Reduced blur */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Reduced shadow */
             overflow: hidden;
-            margin-bottom: 20px;
+            margin-bottom: 15px; /* Reduced margin */
         }
-
         .kita-character {
             position: absolute;
-            bottom: 50px;
+            bottom: 30px; /* Reduced bottom position */
             left: 50%;
             transform: translateX(-50%);
-            width: 200px;
-            height: 250px;
+            width: 150px; /* Reduced width */
+            height: 200px; /* Reduced height */
             z-index: 10;
         }
-
         .kita-head {
-            width: 160px;
-            height: 140px;
+            width: 120px; /* Reduced width */
+            height: 110px; /* Reduced height */
             background: linear-gradient(45deg, #FFD700, #FFA500);
             border-radius: 50%;
             position: relative;
             margin: 0 auto;
-            border: 5px solid #FF6B6B;
-            box-shadow: 0 0 20px rgba(255,107,107,0.5);
+            border: 3px solid #FF6B6B; /* Reduced border width */
+            box-shadow: 0 0 10px rgba(255,107,107,0.5); /* Reduced shadow */
             animation: headBob 1.5s ease-in-out infinite;
         }
-
         @keyframes headBob {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
+            50% { transform: translateY(-3px); } /* Reduced movement */
         }
-
         .kita-eyes {
             display: flex;
             justify-content: space-between;
             position: absolute;
-            top: 30px;
-            left: 30px;
-            right: 30px;
+            top: 25px; /* Adjusted top position */
+            left: 25px; /* Adjusted left position */
+            right: 25px; /* Adjusted right position */
         }
-
         .kita-eye {
-            width: 30px;
-            height: 30px;
+            width: 20px; /* Reduced width */
+            height: 20px; /* Reduced height */
             background: #000;
             border-radius: 50%;
             position: relative;
             animation: blink 3s infinite;
         }
-
         .kita-eye::after {
             content: '';
-            width: 6px;
-            height: 6px;
+            width: 4px; /* Reduced width */
+            height: 4px; /* Reduced height */
             background: #FFF;
             border-radius: 50%;
             position: absolute;
-            top: 3px;
-            left: 3px;
+            top: 2px; /* Adjusted top position */
+            left: 2px; /* Adjusted left position */
         }
-
         @keyframes blink {
             0%, 95%, 100% { transform: scaleY(1); }
             97% { transform: scaleY(0.1); }
         }
-
         .kita-mouth {
             position: absolute;
-            bottom: 20px;
+            bottom: 15px; /* Adjusted bottom position */
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
-            height: 40px;
+            width: 45px; /* Reduced width */
+            height: 30px; /* Reduced height */
             background: #8B4513;
             border-radius: 50%;
-            border: 3px solid #654321;
+            border: 2px solid #654321; /* Reduced border width */
             transition: all 0.3s ease;
             cursor: pointer;
         }
-
         .kita-mouth.happy {
-            width: 80px;
-            height: 50px;
+            width: 60px; /* Reduced width */
+            height: 38px; /* Reduced height */
             background: #32CD32;
             animation: mouthGlow 0.5s ease-out;
         }
-
         @keyframes mouthGlow {
             0% { box-shadow: 0 0 0 rgba(50,205,50,0.7); }
-            50% { box-shadow: 0 0 20px rgba(50,205,50,0.7); }
+            50% { box-shadow: 0 0 15px rgba(50,205,50,0.7); } /* Reduced shadow */
             100% { box-shadow: 0 0 0 rgba(50,205,50,0.7); }
         }
-
         .kita-label {
             position: absolute;
-            top: -30px;
+            top: -25px; /* Adjusted top position */
             left: 50%;
             transform: translateX(-50%);
             background: #FF6B6B;
             color: white;
-            padding: 10px 20px;
-            border-radius: 20px;
-            font-size: 22px;
+            padding: 8px 15px; /* Reduced padding */
+            border-radius: 15px; /* Reduced border radius */
+            font-size: 18px; /* Reduced font size */
             font-weight: bold;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3); /* Reduced shadow */
             animation: labelPulse 2s infinite;
         }
-
         @keyframes labelPulse {
             0%, 100% { transform: translateX(-50%) scale(1); }
-            50% { transform: translateX(-50%) scale(1.05); }
+            50% { transform: translateX(-50%) scale(1.03); } /* Reduced scale */
         }
-
         .kita-body {
-            width: 100px;
-            height: 100px;
+            width: 80px; /* Reduced width */
+            height: 80px; /* Reduced height */
             background: linear-gradient(45deg, #32CD32, #228B22);
-            border-radius: 20px;
+            border-radius: 15px; /* Reduced border radius */
             position: absolute;
             bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            border: 4px solid #FF6B6B;
-            box-shadow: 0 0 15px rgba(255,107,107,0.3);
+            border: 3px solid #FF6B6B; /* Reduced border width */
+            box-shadow: 0 0 10px rgba(255,107,107,0.3); /* Reduced shadow */
         }
-
         .belly-display {
             position: absolute;
-            bottom: 10px;
-            left: 10px;
-            right: 10px;
-            top: 10px;
+            bottom: 5px; /* Reduced bottom position */
+            left: 5px; /* Reduced left position */
+            right: 5px; /* Reduced right position */
+            top: 5px; /* Reduced top position */
             background: rgba(255,255,255,0.3);
-            border-radius: 10px;
-            padding: 5px;
+            border-radius: 8px; /* Reduced border radius */
+            padding: 3px; /* Reduced padding */
             display: flex;
             flex-wrap: wrap;
-            gap: 3px;
+            gap: 2px; /* Reduced gap */
             align-items: flex-start;
             align-content: flex-start;
             overflow: hidden;
         }
-
         .belly-word {
             background: rgba(255,255,255,0.9);
             color: #333;
-            padding: 2px 6px;
-            border-radius: 8px;
-            font-size: 10px;
+            padding: 1px 4px; /* Reduced padding */
+            border-radius: 6px; /* Reduced border radius */
+            font-size: 8px; /* Reduced font size */
             font-weight: bold;
             animation: bellyPop 0.3s ease-out;
         }
-
         @keyframes bellyPop {
             0% { transform: scale(0); }
-            50% { transform: scale(1.2); }
+            50% { transform: scale(1.1); } /* Reduced scale */
             100% { transform: scale(1); }
         }
-
-.floating-word {
-    position: absolute;
-    background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
-    color: yellow;
-    padding: 15px 25px;
-    border-radius: 20px;
-    font-size: 22px;
-    font-weight: bold;
-    font-family: 'Comic Sans MS', cursive;
-    cursor: pointer;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-    transition: all 0.3s ease;
-    animation: float 3s linear infinite;
-    user-select: none;
-}
-
-
-        .floating-word:hover {
-            transform: scale(1.1);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        .floating-word {
+            position: absolute;
+            background: linear-gradient(45deg, #FF6B6B, #4ECDC4);
+            color: yellow;
+            padding: 10px 15px; /* Reduced padding */
+            border-radius: 15px; /* Reduced border radius */
+            font-size: 18px; /* Reduced font size */
+            font-weight: bold;
+            font-family: 'Comic Sans MS', cursive;
+            cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3); /* Reduced shadow */
+            transition: all 0.3s ease;
+            animation: float 3s linear infinite;
+            user-select: none;
+            /* Add touch-specific styles */
+            touch-action: manipulation;
         }
-
+        .floating-word:hover {
+            transform: scale(1.05); /* Reduced scale */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.4); /* Reduced shadow */
+        }
         .floating-word.clicked {
             animation: wordEaten 0.5s ease-out forwards;
         }
-
-@keyframes float {
-    0% { 
-        transform: translateY(0px) rotate(0deg); 
-    }
-    100% { 
-        transform: translateY(-600px) rotate(360deg); 
-    }
-}
-
-
+        @keyframes float {
+            0% { 
+                transform: translateY(0px) rotate(0deg); 
+            }
+            100% { 
+                transform: translateY(-500px) rotate(360deg); /* Adjusted translateY for reduced height */
+            }
+        }
         @keyframes wordEaten {
             0% { 
                 transform: scale(1); 
                 opacity: 1;
             }
             50% { 
-                transform: scale(1.5); 
+                transform: scale(1.2); /* Reduced scale */
                 opacity: 0.8;
             }
             100% { 
-                transform: scale(0) translateY(-100px); 
+                transform: scale(0) translateY(-80px); /* Reduced translateY */
                 opacity: 0;
             }
         }
-
         .control-panel {
             display: flex;
-            gap: 20px;
+            flex-wrap: wrap; /* Allow wrapping on small screens */
+            gap: 10px; /* Reduced gap */
             align-items: center;
+            justify-content: center; /* Center items */
             background: rgba(255,255,255,0.2);
-            padding: 20px;
-            border-radius: 20px;
-            backdrop-filter: blur(10px);
+            padding: 15px; /* Reduced padding */
+            border-radius: 15px; /* Reduced border radius */
+            backdrop-filter: blur(5px); /* Reduced blur */
             color: white;
-            font-size: 18px;
+            font-size: 16px; /* Reduced font size */
             font-weight: bold;
             text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            width: 100%;
+            max-width: 1000px;
         }
-
         .score-display {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px; /* Reduced gap */
         }
-
         .score-number {
             background: #FF6B6B;
             color: white;
-            padding: 15px 20px;
-            border-radius: 15px;
-            font-size: 30px;
-            min-width: 80px;
+            padding: 10px 15px; /* Reduced padding */
+            border-radius: 12px; /* Reduced border radius */
+            font-size: 24px; /* Reduced font size */
+            min-width: 60px; /* Reduced min-width */
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3); /* Reduced shadow */
         }
-
         .game-controls {
             display: flex;
-            gap: 10px;
+            gap: 8px; /* Reduced gap */
         }
-
         .control-btn {
             background: linear-gradient(45deg, #4ECDC4, #44A08D);
             color: white;
             border: none;
-            padding: 15px 25px;
-            border-radius: 15px;
-            font-size: 20px;
+            padding: 12px 20px; /* Reduced padding */
+            border-radius: 12px; /* Reduced border radius */
+            font-size: 16px; /* Reduced font size */
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2); /* Reduced shadow */
+            /* Add touch-specific styles */
+            touch-action: manipulation;
         }
-
         .control-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            transform: translateY(-1px); /* Reduced translateY */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3); /* Reduced shadow */
         }
-
         .control-btn:active {
             transform: translateY(0);
         }
-
         .control-btn.start {
             background: linear-gradient(45deg, #FF6B6B, #FF8E8E);
         }
-
         .control-btn.pause {
             background: linear-gradient(45deg, #FFA500, #FFD700);
         }
-
         .game-over {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             background: rgba(255,255,255,0.95);
-            padding: 40px;
-            border-radius: 20px;
+            padding: 20px; /* Reduced padding */
+            border-radius: 15px; /* Reduced border radius */
             text-align: center;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5); /* Reduced shadow */
             z-index: 1000;
             animation: gameOverAnimation 0.5s ease-out;
+            width: 90%; /* Set width for mobile */
+            max-width: 400px; /* Max width */
         }
-
         @keyframes gameOverAnimation {
             0% { transform: translate(-50%, -50%) scale(0); opacity: 0; }
             100% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
         }
-
         .game-over h2 {
             color: #FF6B6B;
-            font-size: 3em;
-            margin-bottom: 20px;
+            font-size: 2em; /* Reduced font size */
+            margin-bottom: 15px; /* Reduced margin */
         }
-
         .game-over p {
             color: #666;
-            font-size: 1.5em;
-            margin-bottom: 20px;
+            font-size: 1.2em; /* Reduced font size */
+            margin-bottom: 15px; /* Reduced margin */
         }
-
         .instruction {
             position: absolute;
-            top: 20px;
-            left: 20px;
-            right: 20px;
+            top: 10px; /* Reduced top position */
+            left: 10px; /* Reduced left position */
+            right: 10px; /* Reduced right position */
             background: rgba(255,255,255,0.2);
             color: white;
-            padding: 15px;
-            border-radius: 15px;
+            padding: 10px; /* Reduced padding */
+            border-radius: 12px; /* Reduced border radius */
             text-align: center;
+            font-size: 14px; /* Reduced font size */
             font-weight: bold;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(5px); /* Reduced blur */
             animation: instructionBlink 2s infinite;
         }
-
         @keyframes instructionBlink {
             0%, 100% { opacity: 1; }
             50% { opacity: 0.7; }
         }
-
-        @media (max-width: 768px) {
+        /* Media query for larger screens (tablets/desktops) */
+        @media (min-width: 768px) {
+            body {
+                font-size: 18px;
+                padding: 20px;
+            }
+            .header {
+                margin-bottom: 20px;
+            }
+            .header h1 {
+                font-size: 3.5em;
+                margin-bottom: 10px;
+            }
+            .header p {
+                font-size: 1.6em;
+                padding: 10px 20px;
+                border-radius: 20px;
+                backdrop-filter: blur(10px);
+            }
             .game-area {
                 height: 600px;
+                border-radius: 20px;
+                backdrop-filter: blur(10px);
+                box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                margin-bottom: 20px;
             }
-            
             .kita-character {
-                width: 220px;
-                height: 280px;
+                width: 200px;
+                height: 250px;
+                bottom: 50px;
             }
-            
             .kita-head {
-                width: 180px;
+                width: 160px;
                 height: 140px;
+                border: 5px solid #FF6B6B;
+                box-shadow: 0 0 20px rgba(255,107,107,0.5);
             }
-            
+            @keyframes headBob {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-5px); }
+            }
+            .kita-eyes {
+                top: 30px;
+                left: 30px;
+                right: 30px;
+            }
+            .kita-eye {
+                width: 30px;
+                height: 30px;
+            }
+            .kita-eye::after {
+                width: 6px;
+                height: 6px;
+                top: 3px;
+                left: 3px;
+            }
+            .kita-mouth {
+                width: 60px;
+                height: 40px;
+                bottom: 20px;
+                border: 3px solid #654321;
+            }
+            .kita-mouth.happy {
+                width: 80px;
+                height: 50px;
+            }
+            @keyframes mouthGlow {
+                50% { box-shadow: 0 0 20px rgba(50,205,50,0.7); }
+            }
+            .kita-label {
+                top: -30px;
+                padding: 10px 20px;
+                border-radius: 20px;
+                font-size: 22px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            }
+            @keyframes labelPulse {
+                50% { transform: translateX(-50%) scale(1.05); }
+            }
             .kita-body {
                 width: 100px;
                 height: 100px;
+                border-radius: 20px;
+                border: 4px solid #FF6B6B;
+                box-shadow: 0 0 15px rgba(255,107,107,0.3);
             }
-            
-            .control-panel {
-                flex-direction: column;
-                gap: 15px;
+            .belly-display {
+                bottom: 10px;
+                left: 10px;
+                right: 10px;
+                top: 10px;
+                border-radius: 10px;
+                padding: 5px;
+                gap: 3px;
             }
-            
+            .belly-word {
+                padding: 2px 6px;
+                border-radius: 8px;
+                font-size: 10px;
+            }
+            @keyframes bellyPop {
+                50% { transform: scale(1.2); }
+            }
             .floating-word {
+                padding: 15px 25px;
+                border-radius: 20px;
+                font-size: 22px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            }
+            .floating-word:hover {
+                transform: scale(1.1);
+                box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+            }
+            @keyframes float {
+                100% { 
+                    transform: translateY(-600px) rotate(360deg); 
+                }
+            }
+            @keyframes wordEaten {
+                50% { 
+                    transform: scale(1.5); 
+                }
+                100% { 
+                    transform: scale(0) translateY(-100px); 
+                }
+            }
+            .control-panel {
+                gap: 20px;
+                padding: 20px;
+                border-radius: 20px;
+                backdrop-filter: blur(10px);
                 font-size: 18px;
-                padding: 10px 18px;
+            }
+            .score-display {
+                gap: 10px;
+            }
+            .score-number {
+                padding: 15px 20px;
+                border-radius: 15px;
+                font-size: 30px;
+                min-width: 80px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            }
+            .game-controls {
+                gap: 10px;
+            }
+            .control-btn {
+                padding: 15px 25px;
+                border-radius: 15px;
+                font-size: 20px;
+                box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            }
+            .control-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+            }
+            .game-over {
+                padding: 40px;
+                border-radius: 20px;
+                box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+                width: auto;
+                max-width: none;
+            }
+            .game-over h2 {
+                font-size: 3em;
+                margin-bottom: 20px;
+            }
+            .game-over p {
+                font-size: 1.5em;
+                margin-bottom: 20px;
+            }
+            .instruction {
+                top: 20px;
+                left: 20px;
+                right: 20px;
+                padding: 15px;
+                border-radius: 15px;
+                font-size: 18px;
+                backdrop-filter: blur(10px);
+            }
+        }
+        /* Media query for landscape mobile */
+        @media (max-width: 767px) and (orientation: landscape) {
+            .game-area {
+                height: 350px; /* Further reduced height for landscape */
+            }
+            @keyframes float {
+                100% { 
+                    transform: translateY(-350px) rotate(360deg); /* Adjusted for landscape */
+                }
+            }
+            .kita-character {
+                width: 120px; /* Reduced width for landscape */
+                height: 160px; /* Reduced height for landscape */
+                bottom: 20px; /* Adjusted bottom */
+            }
+            .kita-head {
+                width: 100px; /* Reduced width */
+                height: 90px; /* Reduced height */
+            }
+            .kita-body {
+                width: 60px; /* Reduced width */
+                height: 60px; /* Reduced height */
             }
         }
     </style>
@@ -422,12 +563,10 @@
         <h1>🎮 Permainan Kata Ganti Nama - "kita"</h1>
         <p>Klik dan sebut kata ganti nama diri yang terbang untuk memberi makan kepada "kita".</p>
     </div>
-
     <div class="game-area" id="gameArea">
         <div class="instruction" id="instruction">
             🎯 Klik dan sebut kata ganti nama diri yang terbang untuk memberi makan kepada "kita".
         </div>
-        
         <div class="kita-character">
             <div class="kita-head">
                 <div class="kita-label">kita</div>
@@ -442,40 +581,30 @@
             </div>
         </div>
     </div>
-
     <div class="control-panel">
     <div class="score-display">
         <span>📊 Skor:</span>
         <div class="score-number" id="scoreDisplay">0</div>
         <span>/ 20</span>
     </div>
-
     <div class="timer-display">
         ⏱️ Masa: <span id="timer">20</span>s
     </div>
-    
     <div class="game-controls">
         <button class="control-btn start" id="startBtn" onclick="startGame()">🚀 Mula</button>
         <button class="control-btn pause" id="pauseBtn" onclick="togglePause()">⏸️ Jeda</button>
         <button class="control-btn" onclick="resetGame()">🔄 Reset</button>
     </div>
 </div>
-
-
     <script>
 const words = [
   // Kata Ganti Nama Diri Pertama (Tunggal & Jamak)
   'saya', 'aku', 'ku', 'kami', 'hamba', 'patik', 'beta', 'daku',
-
   // Kata Ganti Nama Diri Kedua (Tunggal & Jamak)
   'kau', 'engkau', 'kamu', 'mu', 'awak', 'tuan hamba', 'tuanku', 'dikau', 'anda',
-
   // Kata Ganti Nama Diri Ketiga (Tunggal & Jamak)
   'kalian', 'baginda', 'nya', 'dia', 'beliau', 'mereka'
 ];
-
-
-
         let gameActive = false;
         let gamePaused = false;
         let score = 0;
@@ -485,40 +614,30 @@ const words = [
         let timer = 20;
 let timerInterval;
 let eatenWords = [];
-
-
-
         function startGame() {
     if (gameActive) return;
-
     gameActive = true;
     gamePaused = false;
     score = 0;
     gameWords = [...words].sort(() => 0.5 - Math.random()).slice(0, 20);
     currentFloatingWords = [];
     eatenWords = [];
-
     document.getElementById('scoreDisplay').textContent = score;
     document.getElementById('startBtn').textContent = '🎮 Bermain';
     document.getElementById('startBtn').disabled = true;
     document.getElementById('instruction').style.display = 'none';
-
     // Clear any existing game over screen
     const gameOver = document.querySelector('.game-over');
     if (gameOver) {
         gameOver.remove();
     }
-
     // Clear belly
     document.getElementById('bellyDisplay').innerHTML = '';
-
     // Start spawning words with delay between each
     spawnNextWord(); // This function will handle spawning with delay
-
     // Timer setup
     timer = 20;
     document.getElementById('timer').textContent = timer;
-
     timerInterval = setInterval(() => {
         if (!gamePaused && gameActive) {
             timer--;
@@ -530,29 +649,21 @@ let eatenWords = [];
         }
     }, 1000);
 }
-
 function spawnNextWord() {
     if (!gameActive || gamePaused || gameWords.length === 0) return;
-
     spawnWord(); // Spawn satu perkataan
-
     // Teruskan spawn seterusnya selepas 1.5 saat
     setTimeout(() => {
         spawnNextWord();
     }, 1500); // Boleh tukar nilai ini untuk kelajuan yang lebih perlahan/pantas
 }
-
-
 function endGameByTime() {
     gameActive = false;
     gamePaused = false;
-
     if (wordSpawnInterval) clearInterval(wordSpawnInterval);
-
     // Remove all floating words
     currentFloatingWords.forEach(word => word.remove());
     currentFloatingWords = [];
-
     const gameArea = document.getElementById('gameArea');
     const gameOverScreen = document.createElement('div');
     gameOverScreen.className = 'game-over';
@@ -567,41 +678,36 @@ function endGameByTime() {
         <button class="control-btn" onclick="resetGame()">🔄 Main Lagi</button>
     `;
     gameArea.appendChild(gameOverScreen);
-
     // Reset start button
     document.getElementById('startBtn').textContent = '🚀 Mula';
     document.getElementById('startBtn').disabled = false;
 }
-
-
         function spawnWord() {
             if (!gameActive || gamePaused || gameWords.length === 0) return;
-            
             const gameArea = document.getElementById('gameArea');
             const wordElement = document.createElement('div');
             wordElement.className = 'floating-word';
-            
             // Get random word
             const randomIndex = Math.floor(Math.random() * gameWords.length);
             const word = gameWords[randomIndex];
             wordElement.textContent = word;
-            
             // Remove word from available words
             gameWords.splice(randomIndex, 1);
-            
             // Random starting position
             const startX = Math.random() * (gameArea.offsetWidth - 100);
             wordElement.style.left = startX + 'px';
             wordElement.style.bottom = '-50px';
-            
             // Add click event
             wordElement.addEventListener('click', function() {
                 catchWord(this, word);
             });
-            
+            // Add touch event for mobile
+            wordElement.addEventListener('touchstart', function(e) {
+                e.preventDefault(); // Prevent default touch behavior
+                catchWord(this, word);
+            });
             gameArea.appendChild(wordElement);
             currentFloatingWords.push(wordElement);
-            
             // Remove word after animation completes
             setTimeout(() => {
                 if (wordElement.parentNode) {
@@ -610,56 +716,43 @@ function endGameByTime() {
                 }
             }, 3000);
         }
-
         function catchWord(wordElement, word) {
             if (!gameActive || gamePaused) return;
-            
             eatenWords.push(word);
-
-
             // Add clicked animation
             wordElement.classList.add('clicked');
-            
             // Make mouth happy
             const mouth = document.getElementById('kitaMouth');
             mouth.classList.add('happy');
             setTimeout(() => {
                 mouth.classList.remove('happy');
             }, 500);
-            
             // Add to belly
             const bellyDisplay = document.getElementById('bellyDisplay');
             const bellyWord = document.createElement('div');
             bellyWord.className = 'belly-word';
             bellyWord.textContent = word;
             bellyDisplay.appendChild(bellyWord);
-            
             // Update score
             score++;
             document.getElementById('scoreDisplay').textContent = score;
-            
             // Remove word element
             setTimeout(() => {
                 if (wordElement.parentNode) {
                     wordElement.remove();
                 }
             }, 500);
-            
             // Remove from current floating words
             currentFloatingWords = currentFloatingWords.filter(w => w !== wordElement);
-            
             // Check if game complete
             if (score === 20) {
                 endGame();
             }
         }
-
         function togglePause() {
             if (!gameActive) return;
-            
             gamePaused = !gamePaused;
             const pauseBtn = document.getElementById('pauseBtn');
-            
             if (gamePaused) {
                 pauseBtn.textContent = '▶️ Sambung';
                 // Pause all floating words
@@ -674,7 +767,6 @@ function endGameByTime() {
                 });
             }
         }
-
         function resetGame() {
             gameActive = false;
             gamePaused = false;
@@ -682,47 +774,36 @@ function endGameByTime() {
             gameWords = [...words];
             currentFloatingWords = [];
             eatenWords = [];
-
-            
 if (timerInterval) clearInterval(timerInterval);
 document.getElementById('timer').textContent = '20';
-
-
             // Clear intervals
             if (wordSpawnInterval) {
                 clearInterval(wordSpawnInterval);
             }
-            
             // Clear floating words
             const floatingWords = document.querySelectorAll('.floating-word');
             floatingWords.forEach(word => word.remove());
-            
             // Clear belly
             document.getElementById('bellyDisplay').innerHTML = '';
-            
             // Reset UI
             document.getElementById('scoreDisplay').textContent = '0';
             document.getElementById('startBtn').textContent = '🚀 Mula';
             document.getElementById('startBtn').disabled = false;
             document.getElementById('pauseBtn').textContent = '⏸️ Henti';
             document.getElementById('instruction').style.display = 'block';
-            
             // Remove game over screen
             const gameOver = document.querySelector('.game-over');
             if (gameOver) {
                 gameOver.remove();
             }
         }
-
         function endGame() {
             gameActive = false;
             gamePaused = false;
-            
             // Clear interval
             if (wordSpawnInterval) {
                 clearInterval(wordSpawnInterval);
             }
-            
             // Show completion message
             const gameArea = document.getElementById('gameArea');
             const gameOverScreen = document.createElement('div');
@@ -738,12 +819,10 @@ document.getElementById('timer').textContent = '20';
                 <button class="control-btn" onclick="resetGame()">🔄 Main Lagi</button>
             `;
             gameArea.appendChild(gameOverScreen);
-            
             // Reset start button
             document.getElementById('startBtn').textContent = '🚀 Mula';
             document.getElementById('startBtn').disabled = false;
         }
-
         // Initialize game
         document.addEventListener('DOMContentLoaded', function() {
             resetGame();
